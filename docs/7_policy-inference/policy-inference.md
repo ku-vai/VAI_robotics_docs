@@ -62,13 +62,15 @@ SG2_ZMQ_SUB_IP=192.168.6.xxx worker_inbound    # 맥북 IP 입력
 
 `VR_teleoperation/real_notebook/real_policy_inference.ipynb` 를 커널 `ri_motion_v5_py312` 로 열고, 새 커널에서 첫 셀부터 실행합니다.
 
-설정 셀의 값은 **체크포인트를 학습한 조건에 맞춰야** 합니다. 아래 기본값은 현재 쓰고 있는 체크포인트(arm + gripper 16관절, 손목 카메라 2대로 학습) 기준입니다.
+:::warning[설정 셀의 값을 체크포인트의 학습 조건에 맞추세요]
+아래 기본값은 팔·그리퍼 16관절과 양 손목 카메라로 학습한 체크포인트 기준입니다. 다른 체크포인트를 쓸 때는 학습에 사용한 관절 구성(`EXCLUDED_JOINTS`), 카메라(`CAMERAS`), 녹화 프레임률(`HZ`), 작업 문구(`TASK`)를 확인한 뒤 설정 셀을 실행하세요.
+:::
 
 | 항목 | 기본값 | 의미 |
 | --- | --- | --- |
 | `CHECKPOINT_PATH` | 환경 변수 `SG2_POLICY_CHECKPOINT`, 없으면 노트북에 적힌 경로 | 체크포인트의 `pretrained_model` 폴더. 적힌 기본 경로는 학습 PC(Ubuntu) 경로이니 **본인 PC 경로로 바꿉니다** |
 | `EXCLUDED_JOINTS` | `lift_joint`, `head_joint1`, `head_joint2` | 정책이 다루지 않는 관절. 현재 측정값에서 그대로 유지 |
-| `CAMERAS` | `wrist_left: 5571`, `wrist_right: 5572` | 정책 입력 카메라. 현재 체크포인트는 head 카메라를 쓰지 않음 |
+| `CAMERAS` | `wrist_left: 5571`, `wrist_right: 5572` | 학습에 사용한 카메라 이름과 ZMQ 포트. 양 손목과 헤드 카메라로 학습한 체크포인트라면 노트북 설정 셀에 `CAMERAS = {"head": 5570, "wrist_left": 5571, "wrist_right": 5572}`를 입력합니다. |
 | `HZ` | `30` | 녹화할 때의 fps와 **같아야** 함. 다르면 정책이 학습 때와 다른 속도로 관측을 받음 |
 | `TASK` | `"pick_and_place"` | 학습 데이터셋을 녹화할 때 쓴 task 문구와 맞춤 |
 | `DEVICE` | `None` | `None` 이면 체크포인트에 저장된 장치를 씀. **맥에서는 `"mps"` 또는 `"cpu"` 로 지정** |
