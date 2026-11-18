@@ -62,7 +62,9 @@ SG2_ZMQ_SUB_IP=192.168.6.xxx worker_inbound    # 맥북 IP 입력
 
 `VR_teleoperation/real_notebook/real_policy_inference.ipynb` 를 커널 `ri_motion_v5_py312` 로 열고, 새 커널에서 첫 셀부터 실행합니다.
 
-설정 셀의 값은 **체크포인트를 학습한 조건에 맞춰야** 합니다. 아래 기본값은 현재 쓰고 있는 체크포인트(arm + gripper 16관절, 손목 카메라 2대로 학습) 기준입니다.
+:::warning[설정 셀의 값을 체크포인트의 학습 조건에 맞추세요]
+아래 기본값은 팔·그리퍼 16관절과 양 손목 카메라로 학습한 체크포인트 기준입니다. 다른 체크포인트를 쓸 때는 학습에 사용한 관절 구성(`EXCLUDED_JOINTS`), 카메라(`CAMERAS`), 녹화 프레임률(`HZ`), 작업 문구(`TASK`)를 확인한 뒤 설정 셀을 실행하세요.
+:::
 
 | 항목 | 기본값 | 의미 |
 | --- | --- | --- |
