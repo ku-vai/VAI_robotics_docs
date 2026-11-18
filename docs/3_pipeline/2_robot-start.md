@@ -10,7 +10,7 @@ title: 로봇 구동
 - [ ] 로봇 작업 반경에 사람·장애물 없음, **E-stop 담당자 1명 대기**
 :::
 
-전원을 넣고 ROS 2 노드가 올라오는 **bringup**까지의 절차입니다. 여기까지 끝나면 [Interactive Marker](../4_interactive-marker/interactive-marker.md), [VR Teleoperation](../5_vr-teleoperation/3_run.md), [Policy Inference](../6_policy-inference/policy-inference.md) 중 하나로 넘어갑니다.
+전원을 넣고 ROS 2 노드가 올라오는 **bringup**까지의 절차입니다. 여기까지 끝나면 [Interactive Marker](../4_interactive-marker/interactive-marker.md), [VR Teleoperation](../5_vr-teleoperation/3_run.md), [Policy Inference](../7_policy-inference/policy-inference.md) 중 하나로 넘어갑니다.
 
 ## 1. 전원 인가
 

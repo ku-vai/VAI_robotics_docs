@@ -12,7 +12,7 @@ VR로 모은 데이터로 학습한 **LeRobot 정책**(ACT 등, 종류 무관)�
 
 :::info[시작 전 확인]
 - [ ] [환경 구축](../3_pipeline/1_setup.md) 완료 — conda 환경 `ri_motion_v5_py312`
-- [ ] 학습된 체크포인트(`pretrained_model` 폴더)가 이 PC에 있음
+- [ ] 학습된 체크포인트(`pretrained_model` 폴더)가 이 PC에 있음. 직접 만들려면 [ACT 정책 학습](../6_policy-training/act.md) 참고
 - [ ] [로봇 구동](../3_pipeline/2_robot-start.md) 완료 — 전원·E-STOP 해제
 - [ ] VR·마커·베이스 노트북을 모두 STOP 했음 (제어 세션은 하나만 가질 수 있습니다)
 :::
@@ -29,8 +29,11 @@ VR로 모은 데이터로 학습한 **LeRobot 정책**(ACT 등, 종류 무관)�
 
 ```bash title="맥북 — VAI_AIWORKER/VR_teleoperation 에서"
 conda activate ri_motion_v5_py312
-python scripts/check_policy_inference.py <checkpoint_path>
-python scripts/check_policy_inference.py <checkpoint_path> --device cpu   # 장치 지정
+# 학습한 모델의 pretrained_model 경로를 입력합니다.
+CHECKPOINT_PATH="/path/to/checkpoints/050000/pretrained_model"
+# 노트북 기본 구성과 같이 팔·그리퍼 16관절과 손목 카메라 2대로 학습한 경우
+python scripts/check_policy_inference.py "$CHECKPOINT_PATH" --device cpu \
+  --exclude-joints lift_joint head_joint1 head_joint2 --cameras wrist_left wrist_right
 ```
 
 `PASS` 가 뜨고 관절별 예측값이 유한한 값(finite)으로 나오면 다음으로 넘어갑니다. 여기서 오류가 나면 체크포인트 경로, LeRobot 버전, device부터 확인합니다.
