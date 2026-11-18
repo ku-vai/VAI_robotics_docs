@@ -96,7 +96,7 @@ EEF 자세는 손마다 `x y z qw qx qy qz` (base_link 기준, m / 쿼터니언)
 `VR_teleoperation/real_notebook/review_dataset.ipynb` 로 에피소드를 하나씩 영상으로 확인하고, 보관할 것만 모아 **최종 데이터셋**을 새로 만듭니다. 원본은 수정하지 않습니다. 로봇 연결은 필요 없습니다.
 
 1. ② 셀의 `TASK_NAME` 에 검수할 **데이터셋 폴더 이름**을 넣습니다. EEF를 켜고 녹화했다면 `_eef` 까지 포함합니다 (예: `pick_and_place_eef`).
-2. 요약 표에서 `action_NaN` 비율이 높은 에피소드는 실제 조작이 거의 없었다는 뜻이니 먼저 봅니다.
+2. `action_NaN`은 관절 명령에 `NaN`이 하나라도 있는 프레임의 비율입니다. ② 셀에서 `summary.loc[summary["action_NaN"] > 0, "episode"].tolist()`로 해당 에피소드 번호를 확인하세요. 요약 표의 백분율은 반올림되어 작은 값이 0%로 보일 수 있습니다. ③ 셀에서는 이 번호들을 `D`로 폐기해야 최종 학습 데이터에서 빠집니다. 노트북은 보관한 에피소드의 프레임을 그대로 복사합니다.
 3. ③ 셀을 실행하면 `SG2 review` 창이 뜹니다. **창을 클릭해 포커스를 준 뒤** 키를 누릅니다. 녹화 중 Y로 표시한 에피소드는 미리 폐기로 들어가 있습니다.
 
    | 키 | 동작 |
@@ -121,6 +121,7 @@ EEF 자세는 손마다 `x y z qw qx qy qz` (base_link 기준, m / 쿼터니언)
 ## 관련 문서
 
 - [실행](./3_run.md)
-- [문제 해결](../7_troubleshooting.md)
-- [Policy Inference](../6_policy-inference/policy-inference.md) — 이 데이터로 학습한 정책을 로봇에서 돌리기
+- [문제 해결](../8_troubleshooting.md)
+- [ACT 정책 학습](../6_policy-training/act.md) — 검수한 시연으로 `lerobot-train` 실행하기
+- [Policy Inference](../7_policy-inference/policy-inference.md) — 이 데이터로 학습한 정책을 로봇에서 돌리기
 - [AI WORKER 개요 — 센서 구성](../1_ai-worker/1_overview.md)

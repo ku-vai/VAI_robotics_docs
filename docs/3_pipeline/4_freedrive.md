@@ -11,7 +11,7 @@ title: 프리드라이브
 - [ ] 로봇을 붙잡아 줄 사람 1명, E-stop 담당 1명
 :::
 
-로봇의 DYNAMIXEL 토크를 끄고 **손으로 직접 자세를 옮기는** 방법입니다. 원하는 자세를 잡거나, 정책 추론용 [safety box](../6_policy-inference/policy-inference.md#safety-box) 경계를 잴 때 씁니다.
+로봇의 DYNAMIXEL 토크를 끄고 **손으로 직접 자세를 옮기는** 방법입니다. 원하는 자세를 잡거나, 정책 추론용 [safety box](../7_policy-inference/policy-inference.md#safety-box) 경계를 잴 때 씁니다.
 
 :::danger[팔만 풀리는 게 아닙니다]
 토크 서비스는 follower 하드웨어 전체에 대한 **스위치 하나**입니다. `off` 를 하면 아래가 **한꺼번에** 풀립니다.
@@ -67,4 +67,4 @@ python scripts/live_fk_monitor.py --robot-ip 192.168.6.2 --rate 10   # 출력 �
 
 - [로봇 구동](./2_robot-start.md)
 - [로봇 종료](./3_robot-exit.md)
-- [Policy Inference — safety box](../6_policy-inference/policy-inference.md#safety-box)
+- [Policy Inference — safety box](../7_policy-inference/policy-inference.md#safety-box)
