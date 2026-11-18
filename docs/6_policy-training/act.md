@@ -99,6 +99,8 @@ conda run -n lerobot_act --no-capture-output wandb login
 
 ## 3. 체크포인트 확인과 학습 재개
 
+연구실 PC에서는 `VAI_AIWORKER/lerobot/outputs/train/`에서 이전 학습 결과를 확인할 수 있습니다. 원하는 실험 폴더의 `checkpoints/`를 열면 저장된 스텝별 모델이 있습니다.
+
 50,000스텝 학습을 마치면 최종 모델은 실행 폴더의 `checkpoints/050000/pretrained_model/`에 저장됩니다.
 
 ```text
